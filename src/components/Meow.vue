@@ -1,11 +1,12 @@
 <template>
     <v-container fluid>
       {{getname}}
+      <v-btn @click="clear">CLEAR</v-btn>
     </v-container>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   components: {
   },
@@ -20,11 +21,10 @@ export default {
   created () {
   },
   computed: {
-    ...mapGetters({
-      getname: 'getname'
-    })
+    ...mapGetters(['getname'])
   },
   methods: {
+    ...mapActions(['clear'])
   },
   watch: {
   }

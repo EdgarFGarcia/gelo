@@ -11,11 +11,17 @@ const store = new Vuex.Store({
     mutations: {
       setname(state, v){
         state.name.push(v)
+      },
+      clearname(state){
+        state.name = []
       }
     },
     actions: {
       setname({commit}, v){
         commit('setname', v)
+      },
+      clear({commit}){
+        commit('clearname')
       }
     },
     getters: {

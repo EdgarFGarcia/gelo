@@ -7,12 +7,12 @@
         cols="6"
       >
         <v-text-field
-          v-model="name"
+          v-model="item.name"
         ></v-text-field>
         <v-text-field
-          v-model="address"
+          v-model="item.address"
         ></v-text-field>
-        <v-btn @click="sdata">send</v-btn>
+        <v-btn @click="setname(item)">send</v-btn>
       </v-col>
       <v-col
         cols="3"
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+// import { mapActions } from 'vuex'
 import secondPage from './Meow.vue'
 import newpage from './third.vue'
 export default {
@@ -40,8 +41,10 @@ export default {
   ],
   data () {
     return {
-      name: null,
-      address: null
+      item: {
+        name: '',
+        address: ''
+      },
     }
   },
   mounted () {
@@ -51,12 +54,17 @@ export default {
   computed: {
   },
   methods: {
-    sdata(){
+    // ...mapActions(['setname'])
+    setname(){
       const toPass = {
-        name: this.name,
-        address: this.address
+        name: this.item.name,
+        address: this.item.address
       }
       this.$store.dispatch('setname', toPass)
+      this.item = {
+        name: null,
+        address: null
+      }
     }
   },
   watch: {
