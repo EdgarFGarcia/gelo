@@ -7,12 +7,14 @@
         cols="6"
       >
         <v-text-field
+          label="Name"
           v-model="item.name"
         ></v-text-field>
         <v-text-field
+          label="address"
           v-model="item.address"
         ></v-text-field>
-        <v-btn @click="setname(item)">send</v-btn>
+        <v-btn @click="setname">send</v-btn>
       </v-col>
       <v-col
         cols="3"
@@ -29,7 +31,7 @@
 </template>
 
 <script>
-// import { mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import secondPage from './Meow.vue'
 import newpage from './third.vue'
 export default {
@@ -50,12 +52,14 @@ export default {
   mounted () {
   },
   created () {
+    this.getdatafapi()
   },
   computed: {
   },
   methods: {
+    ...mapActions(['getdatafapi']),
     // ...mapActions(['setname'])
-    setname(){
+    async setname(){
       const toPass = {
         name: this.item.name,
         address: this.item.address
